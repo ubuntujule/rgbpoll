@@ -11,4 +11,4 @@ RUN pip3 install -r /rgbpoll/requirements.txt
 
 WORKDIR rgbpoll
 
-CMD ./manage.py runserver 0:8010
+CMD ./manage.py runserver 0:8011
