@@ -38,7 +38,7 @@ except (FileNotFoundError):
 # app = falcon.API(middleware=[cors.middleware])
 
 app = falcon.API()
-app.add_route('/', Entries())
+app.add_route('/entry', Entries())
 
 
 # gunicorn name:app -b 0:80 --reload
