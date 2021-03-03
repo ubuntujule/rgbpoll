@@ -27,7 +27,7 @@ def write_on_json():
     with open('data.json', 'w') as f:
         json.dump(db, f)
 try:
-    with open(data.json) as f:
+    with open('data.json') as f:
         db = json.load(f)
 except (FileNotFoundError):
     db = {}
