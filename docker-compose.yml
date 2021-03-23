@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    restart: always
+    image: postgres
+    networks:
+    - rgb_db
+    environment:
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_DB=rgb_db
+    volumes:
+    - ./init.db.sh:/docker-entrypoint-initdb.d/init-db.sh
+networks:
+  rgb_db:
