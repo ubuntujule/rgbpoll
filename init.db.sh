@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS entries(
 uuid CHAR(36) PRIMARY KEY, 
 name VARCHAR(255), 
 date DATE, 
-start TIME(HH:MI)
-end TIME(HH:MI)
+start_time TIME,
+end_time TIME,
 comment VARCHAR(255));
 EOSQL
