@@ -10,5 +10,30 @@ services:
     - POSTGRES_DB=rgb_db
     volumes:
     - ./init.db.sh:/docker-entrypoint-initdb.d/init-db.sh
+  api: 
+    build: api
+    ports:
+    - 8000
+    restart: always
+    networks:
+    - rgb_api
+    volumes:
+    - ./api:/api
+
+  django:
+    restart: always
+    ports:
+    - 80:80
+    build: .
+    networks:
+    - rgb_db
+    - rgb_api
+    volumes:
+    - .:/rgbpoll
+    command:
+    - "./manage.py"
+    - "runserver"
+    - "0:80"
 networks:
   rgb_db:
+  rgb_api:

@@ -9,8 +9,8 @@ RUN apk add --no-cache --update \
 
 RUN pip3 install --upgrade --no-cache-dir \
         falcon \
-        gunicorn
+        gunicorn3
 #        falcon-cors \
+
 #        requests
-COPY api.py .
-CMD ["gunicorn", "/api:app", "--bind", "0:80"]
+CMD gunicorn app:api -b 0:8000

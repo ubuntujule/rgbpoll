@@ -1,5 +1,6 @@
 import falcon
 import json
+import uuid
 
 """
  # list comprehension for later
@@ -13,13 +14,13 @@ class Entries():
 
 
 class Entry():
-    def on_put(self, req, resp, _id):
+    def on_put(self, req, resp):
         data = json.load(req.stream)
-
+        id = uuid.uuid4()
         print(id)
         db[id] = data 
         write_on_json()
-        resp.media = {'id': _id, '_self':f'/entry/{_id}', 'data':data} # instead of data db[_id]
+        resp.media = {'id': id, '_self':f'/entry/{_id}', 'data':data} # instead of data db[_id]
 
 
 def write_on_json():
@@ -40,5 +41,3 @@ except (FileNotFoundError):
 app = falcon.API()
 app.add_route('/entry', Entries())
 
-
-# gunicorn name:app -b 0:80 --reload

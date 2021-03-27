@@ -1,1 +1,2 @@
 prettytable
+psycopg2-binary
